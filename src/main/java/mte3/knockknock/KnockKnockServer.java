@@ -16,9 +16,8 @@ public class KnockKnockServer {
     public static int PORT = 54322;
 
     public static void receiveAndSend(Scanner scanner,String message,PrintWriter writer,boolean concat) {
-        ServerSocket server = new ServerSocket(PORT);
-        PrintWriter out = new PrintWriter(server.getOutputStream ());
-        InputStreamReader inputStreamReader = new InputStreamReader(server.getInputStream());
+        PrintWriter out = writer;
+        InputStreamReader inputStreamReader;
         BufferedReader in = new BufferedReader(inputStreamReader);
 
         try {System.out.println(in.readLine());} 
@@ -26,13 +25,12 @@ public class KnockKnockServer {
 
         out.println(message);
         out.flush();
-        out.println(server.getInetAddress() + " who?");
+        out.println(" who?");
         out.flush();
         try {System.out.println(in.readLine());} 
 		catch (IOException e) {System.err.println("Error: " + e.getMessage());}
         in.close();
         out.close();
-        server.close();
         // 
         // 
         // 
@@ -41,8 +39,9 @@ public class KnockKnockServer {
     
     public static void main(String args[]) throws IOException {
         ServerSocket server = new ServerSocket(PORT);
+        Scanner s = new Scanner();
         server.accept();
-        receiveAndSend(null, null, null, false);
+        receiveAndSend(s, null, null, false);
         // 
         // 
         // 
