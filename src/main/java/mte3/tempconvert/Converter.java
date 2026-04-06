@@ -17,16 +17,17 @@ public class Converter {
         
         try(Scanner scanner = new Scanner(System.in)) {
             System.out.print("Please enter temperature (for conversion): ");
-
+            double temp = scanner.nextDouble();
             // (part 1) conversion from C to F
-            
-            
+            double cToF = temp*9/5 + 32;
+            System.out.println("Celsius to Fahrenheit: " + cToF);
+ 
             // (part 2) conversion from F to C
-            
-            
+            double fToC = (temp - 32) * 5/9;
+            System.out.println("Fahrenheit to Celsius: " + fToC);
             // (part 3) conversion from F to K
-            
-
+            double FtoK =  (temp - 32) * 5/9 + 273.15;           
+            System.out.println("Fahrenheit to Kelvin: " + FtoK);
 
         }  // try { } block closed
 
